@@ -87,7 +87,7 @@ public class ArrayBag implements Bag {
 	 */
 	private void ensureCapacity() {
 		if (numberOfItems == capacity) {
-			capacity = (numberOfItems+) * CAPACITY_MULTIPLIER;
+			capacity = (numberOfItems+1) * CAPACITY_MULTIPLIER;
 			Object[] newArray = new Object[capacity];
 			System.arraycopy(items,0,newArray,0,numberOfItems);
 			items = newArray;
