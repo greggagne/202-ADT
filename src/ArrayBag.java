@@ -7,8 +7,6 @@
 public class ArrayBag implements Bag {
 	public static final int CAPACITY_MULTIPLIER = 2;
 	public static final int DEFAULT_CAPACITY = 15;
-	
-	private int capacity = 0;
 	private int numberOfItems = 0;
 	private Object[] items;
 	
@@ -21,7 +19,6 @@ public class ArrayBag implements Bag {
 			throw new IllegalArgumentException("Capacity must be >= 0");
 		}
 		
-		this.capacity = capacity;
 		items = new Object[capacity];
 	}
 
@@ -86,9 +83,9 @@ public class ArrayBag implements Bag {
 	 * new array.
 	 */
 	private void ensureCapacity() {
-		if (numberOfItems == capacity) {
-			capacity = (numberOfItems+1) * CAPACITY_MULTIPLIER;
-			Object[] newArray = new Object[capacity];
+		if (numberOfItems == items.length) {
+			int newCapacity = (numberOfItems+1) * CAPACITY_MULTIPLIER;
+			Object[] newArray = new Object[newCapacity];
 			System.arraycopy(items,0,newArray,0,numberOfItems);
 			items = newArray;
 		}
